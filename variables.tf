@@ -16,20 +16,22 @@
 
 variable "project_id" {
   description = "The project ID to deploy to"
+  default     = "silicon-dialect-245108"
 }
 
 variable "region" {
   description = "The region to deploy to"
+  default     = "europe-west3"
 }
 
 variable "jenkins_instance_name" {
   description = "The name to assign to the Jenkins VM"
-  default     = "jenkins"
+  default     = "jenkins-tf"
 }
 
 variable "jenkins_instance_machine_type" {
   description = "The machine type to provision for Jenkins"
-  default     = "n1-standard-4"
+  default     = "n1-standard-1"
 }
 
 variable "jenkins_boot_disk_source_image" {
@@ -44,20 +46,23 @@ variable "jenkins_boot_disk_source_image_project" {
 
 variable "jenkins_instance_zone" {
   description = "The zone to deploy the Jenkins VM in"
+  default     = "europe-west3-c"
 }
 
 variable "jenkins_instance_network" {
   description = "The GCP network to deploy the Jenkins VM in"
+  default     = "default"
 }
 
 variable "jenkins_instance_subnetwork" {
   description = "The GCP subnetwork to deploy the Jenkins VM in"
+  default     = "default"
 }
 
 variable "jenkins_instance_tags" {
   type        = list(string)
   description = "Tags to assign to the Jenkins VM"
-  default     = []
+  default     = ["http-server","https-server","jenkins-external-80","jenkins-external-443"]
 }
 
 variable "jenkins_instance_additional_metadata" {
@@ -68,7 +73,7 @@ variable "jenkins_instance_additional_metadata" {
 
 variable "jenkins_initial_password" {
   description = "The initial password to protect Jenkins logins with. Defaults to a random 8-character alphanumeric string. This may not contain special characters."
-  default     = ""
+  default     = "1qaz2wsx"
 }
 
 variable "jenkins_instance_access_cidrs" {
@@ -89,6 +94,7 @@ variable "jenkins_service_account_display_name" {
 
 variable "jenkins_workers_project_id" {
   description = "The GCP project to deploy Jenkins workers within"
+  default     = "silicon-dialect-245108"
 }
 
 variable "jenkins_workers_instance_cap" {
@@ -108,11 +114,12 @@ variable "jenkins_workers_name_prefix" {
 
 variable "jenkins_workers_region" {
   description = "The name of the region into which to deploy Jenkins workers"
+  default     = "europe-west3"
 }
 
 variable "jenkins_workers_zone" {
   description = "The name of the zone into which to deploy Jenkins workers"
-  default     = "us-east4-b"
+  default     = "europe-west3-c"
 }
 
 variable "jenkins_workers_machine_type" {
@@ -143,7 +150,7 @@ variable "jenkins_workers_labels" {
 
 variable "jenkins_workers_run_as_user" {
   description = "The user to run Jenkins jobs as on workers"
-  default     = "ubuntu"
+  default     = "Admin"
 }
 
 variable "jenkins_workers_boot_disk_type" {
@@ -163,6 +170,7 @@ variable "jenkins_workers_boot_disk_source_image_project" {
 
 variable "jenkins_workers_network" {
   description = "The URL of the network to deploy Jenkins workers into"
+  default     = "default"
 }
 
 variable "jenkins_workers_subnetwork" {
@@ -178,7 +186,7 @@ variable "jenkins_workers_network_tags" {
 
 variable "jenkins_workers_service_account_email" {
   description = "The service account email to assign to Jenkins workers. Leave blank for the default compute service account"
-  default     = ""
+  default     = "ivannatetletska@silicon-dialect-245108.iam.gserviceaccount.com"
 }
 
 variable "jenkins_workers_retention_time_minutes" {
