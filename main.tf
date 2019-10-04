@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+provider "google" {
+  credentials = "${file("credentials.json")}"
+}
 
 locals {
   jenkins_metadata = {
@@ -26,7 +29,7 @@ locals {
     random_string.jenkins_password.result,
   )
   jenkins_startup_script_template = file("${path.module}/templates/jenkins_startup_script.sh.tpl")
-  jenkins_username                = "user"
+  jenkins_username                = "Admin"
 
   jenkins_workers_project_url = "https://www.googleapis.com/compute/v1/projects/${var.jenkins_workers_project_id}"
 
